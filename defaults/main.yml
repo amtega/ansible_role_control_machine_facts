@@ -1,2 +1,14 @@
 ---
 # Role default lower priority variables
+
+# Group where the ansible control machine resides
+
+control_machine_group: ansible
+
+# Command to use to gather control machine hostname
+
+control_machine_hostname_command: /usr/bin/hostname
+
+# Default control machine to return if no one is discovered
+
+control_machine_default: "{{ groups[control_machine_group] | first }}"
