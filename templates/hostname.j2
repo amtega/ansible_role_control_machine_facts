@@ -1,0 +1,20 @@
+{% set gathered_hostname = lookup("pipe", control_machine_hostname_command).splitlines()
+                           | first
+                           | trim %}
+{% set ns = namespace(found=false) %}
+
+{% if gathered_hostname in groups[control_machine_group] %}
+{{ gathered_hostname }}
+{% set ns.found = true %}
+{% else %}
+{% for host in groups[control_machine_group] %}
+{% if hostvars[host].ansible_host | default("") == gathered_hostname %}
+{{ hostvars[host].inventory_hostname }}
+{% set ns.found = true %}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if not ns.found and control_machine_default | default("") | length > 0 %}
+{{ control_machine_default }}
+{% endif %}
