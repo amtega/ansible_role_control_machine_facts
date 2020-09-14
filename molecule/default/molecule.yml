@@ -67,6 +67,8 @@ provisioner:
     hosts:
       molecule_hosts:
         vars:
+          control_machine_group: all
+          control_machine_default: localhost
       molecule_hosts_fedora:
         vars:
           ansible_python_interpreter: /usr/bin/python3

@@ -1,2 +1,14 @@
 ---
 # Role tasks
+
+- name: Setup fact with control machine hostname
+  set_fact:
+    control_machine_hostname: >-
+      {{ lookup("template", "hostname.j2") | trim }}
+
+- name: Assert control machine hostname is valid
+  assert:
+    that: control_machine_hostname | length > 0
+    fail_msg: Control machine hostname cannot be found
+    success_msg: >-
+      Control machine hostname is {{ control_machine_hostname }}
