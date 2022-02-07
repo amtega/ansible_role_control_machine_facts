@@ -8,7 +8,7 @@ A list of all the default variables for this role is available in `defaults/main
 
 The role setups the following facts:
 
--  `control_machine_hostname` hostname of the control machine.
+- `control_machine_hostname` hostname of the control machine.
 
 ## Example Playbook
 
@@ -36,7 +36,7 @@ molecule test --all
 
 ## License
 
-Copyright (C) 2020 AMTEGA - Xunta de Galicia
+Copyright (C) 2022 AMTEGA - Xunta de Galicia
 
 This role is free software: you can redistribute it and/or modify it under the terms of:
 
